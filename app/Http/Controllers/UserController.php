@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -9,10 +10,26 @@ class UserController extends Controller
 
     public function postSignUp(Request $request)
     {
+        $email = $request['email'];
+        $first_name = $request['first_name'];
+        $password = bcrypt($request['password']);
+
+        $user = New User;
+
+        $user->email = $user;
+        $user->first_name = $first_name;
+        $user->password = $password;
+
+        $user->save();
+
+        return redirect()->back();
+
+
+
 
     }
 
-    public function postSignIn()
+    public function postSignIn(Request $request)
     {
 
     }
