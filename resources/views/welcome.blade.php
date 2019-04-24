@@ -5,11 +5,24 @@ ByteFreaks Social Network
 
 @endsection
 
-
+<br>
 @section('content')
 
     Welcome to ByteFreaks Social Network
-
+    <br>
+@if(count($errors)>0)
+    <div class="row">
+    <div class="col-md-6">
+        <ul>
+            @foreach($errors->all() as $er)
+                <li>
+                    {{$er}}
+                </li>
+                @endforeach
+        </ul>
+    </div>
+</div>
+    @endif
     <div class="row">
         <div class="col-md-6">
             <h3>Sign Up</h3>
@@ -17,7 +30,7 @@ ByteFreaks Social Network
                 @csrf
               <div class="form-group">
                     <label for="email">Your Email</label>
-                    <input class="form-control" type="text" name="email" id="email">
+                    <input class="form-control" type="text" name="email" id="email" value="{{Request::old('email')}}">
                 </div>
                 <div class="form-group">
                     <label for="first_name">Your Name</label>
